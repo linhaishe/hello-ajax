@@ -43,13 +43,13 @@
 - 现在已被JSON取代
 
 ```html
-// 比如说我有一个学生数据： 
-// name = "孙悟空" ; age = 18 ; gender = "男" ; 
-// 用 XML 表示： 
-<student> 
-  <name>孙悟空</name> 
-	<age>18</age> 
-	<gender>男</gender> 
+// 比如说我有一个学生数据：
+// name = "孙悟空" ; age = 18 ; gender = "男" ;
+// 用 XML 表示：
+<student>
+   <name>孙悟空</name>
+   <age>18</age>
+   <gender>男</gender>
 </student>
 
 // 现在已经被 JSON 取代了。
@@ -60,7 +60,7 @@
 
 ### 2. HTTP协议
 
-HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传输协议。
+HTTP协议（HyperText Transfer Protocol，超文本传输协议）是用于从WWW服务器传输超文本到本地浏览器的传输协议。协议详细规定了浏览器和万维网服务器之间互相通信的规则
 
 请求和响应都分别包括==行、头、空行、体==
 
@@ -221,15 +221,15 @@ a.com 向 b.com发请求则是域名不同
 
    - 动态的创建一个script标签
 
-   ```js
+   ```
    var script = document.createElement("script");
    ```
 
    - 设置script的src，设置回调函数
 
-   ~~~js
+   ```js
    script.src = "http://locallhost:3000/textAJAX?callback=abc"
-   ~~~
+   ```
 
 ### 3. CORS
 
@@ -245,6 +245,18 @@ a.com 向 b.com发请求则是域名不同
 
    主要是服务端的设置
 
+   ```js
+   app.all("/cors-server", (request, response) => {
+     //设置响应头
+     response.setHeader("Access-Control-Allow-Origin", "*");
+     response.setHeader("Access-Control-Allow-Headers", "*");
+     response.setHeader("Access-Control-Allow-Method", "*");
+     // response.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+   
+     response.send("hello CORS");
+   });
+   ```
+
 # 推荐阅读
 
 - [ruanyifeng blog](http://www.ruanyifeng.com/blog/2016/04/cors.html)
@@ -253,4 +265,4 @@ a.com 向 b.com发请求则是域名不同
 - [Ajax-MDN](https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX)
 - [Ajax总结篇](https://www.jianshu.com/p/c94e49772123)
 - [Javascript异步编程的4种方法](http://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html)
-- [原生ajax函数封装](
+
